@@ -20,6 +20,11 @@
         box-shadow: 0px 0px 5px black
         margin: 60px auto
         padding-top: 8px
+      footer
+        text-align: left
+        position: absolute
+        bottom: 0px
+        font-size: 80%
         
         
 %body
@@ -27,3 +32,10 @@
     =yield
   #graph
     %h5 (graph coming soon)
+  %footer
+    %h5 
+      Site by:
+      %a{:href=>"http://twitter.com/ekoslow"} @ekoslow
+      %br 
+      View the source on 
+      %a{:href=>"https://github.com/ekosz/Portal-2-Release-Predictor"} GitHub
