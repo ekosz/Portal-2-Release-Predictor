@@ -1,0 +1,29 @@
+!!! 5
+%head
+  %title Portal 2 Countdown
+  %style{:type=>'text/css'}
+    :sass
+      body
+        font-family: 'Helvetica Neue', Helvetica, sans-serif
+        font-size: 18px
+        text-shadow: 0 1px 0 #fff
+        text-align: center
+        color: #666
+        background: url('bkgd-shadow.png') 0 0 repeat-x #E0E0D8
+      #wrapper
+        width: 600px
+        height: 200px
+        -moz-border-radius: 30px
+        border-radius: 30px
+        -webkit-box-shadow: 0px 0px 5px black
+        -moz-box-shadow: 0px 0px 5px black
+        box-shadow: 0px 0px 5px black
+        margin: 60px auto
+        padding-top: 8px
+        
+        
+%body
+  #wrapper
+    =yield
+  #graph
+    %h5 (graph coming soon)
