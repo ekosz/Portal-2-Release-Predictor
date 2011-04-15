@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    haml (3.0.25)
     linefit (0.1.0)
     rack (1.2.2)
     sinatra (1.2.3)
@@ -12,5 +13,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml
   linefit
   sinatra
