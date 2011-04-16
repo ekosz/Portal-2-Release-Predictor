@@ -11,7 +11,11 @@ get '/' do
   start = hash[:x][0]
   lr.setData(hash[:x].map{|m|m-start}, hash[:y])
   intercept, @slope = lr.coefficients
-  @timetil = Time.at( ((100-intercept)/@slope).to_i + start).strftime("%m/%d/%Y %I:%M%p")
+  at_100 = ((100-intercept)/@slope).to_i + start 
+  @timetil = Time.at( at_100 ).strftime("%A %I:%M%p")
+
+  @scatter_data = hash[:x].zip(hash[:y]).map {|m| [m[0]*1000, m[1]]}.to_s
+  @line_data = [ [start*1000, intercept], [at_100*1000, 100] ].to_s
 
 
   haml :index

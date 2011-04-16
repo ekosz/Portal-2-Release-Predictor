@@ -1,6 +1,8 @@
 !!! 5
 %head
   %title Portal 2 Countdown
+  %script{:type=>'text/javascript', :src=>'jquery.min.js'}
+  %script{:type=>'text/javascript', :src=>'highcharts.js'}
   %style{:type=>'text/css'}
     :sass
       body
@@ -25,6 +27,11 @@
         position: absolute
         bottom: 0px
         font-size: 80%
+      #graph
+        width: 800px
+        height: 400px
+        margin: auto auto
+        margin-bottom: 20px
         
         
 %body
@@ -39,3 +46,29 @@
       %br 
       View the source on 
       %a{:href=>"https://github.com/ekosz/Portal-2-Release-Predictor"} GitHub
+  :javascript
+    var chart = new Highcharts.Chart({
+      
+      chart: { renderTo: 'graph', borderRadius: 30, shadow: true},
+      title: { text: 'Graph of Data' },
+      tooltip: {
+        formatter: function() {
+          var time = new Date(this.x)
+          return time.getDate()+'th at '+time.getHours()+':'+time.getMinutes()+',<br /><b>'+this.y+'%</b> compleated'
+        }
+      },
+      plotOptions: { line: { dashStyle: 'LongDash' } },
+      xAxis: { type: 'datetime' },
+      yAxis: { max: 100, title: {text:'Percent Compleate'}},
+      series: [
+        {
+          data: #{@scatter_data},
+          type: 'scatter',
+          name: 'Historical Data'
+        },
+        {
+          data: #{@line_data},
+          name: 'Line of Best Fit'
+        }
+      ]
+    });
