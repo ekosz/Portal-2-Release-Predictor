@@ -3,6 +3,13 @@ require 'sinatra'
 require 'linefit'
 require 'open-uri'
 require 'yaml'
+require 'rack/cache'
+
+use Rack::Cache
+
+before do
+  expires 1800, :public
+end
 
 get '/' do
 

@@ -4,6 +4,8 @@ GEM
     haml (3.0.25)
     linefit (0.1.0)
     rack (1.2.2)
+    rack-cache (1.0.1)
+      rack (>= 0.4)
     sinatra (1.2.3)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
@@ -15,4 +17,5 @@ PLATFORMS
 DEPENDENCIES
   haml
   linefit
+  rack-cache
   sinatra
