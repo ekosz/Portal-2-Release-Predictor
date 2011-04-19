@@ -3,6 +3,7 @@
   %title Portal 2 Countdown
   %script{:type=>'text/javascript', :src=>'jquery.min.js'}
   %script{:type=>'text/javascript', :src=>'highcharts.js'}
+  %script{:type=>'text/javascript', :src=>'strftime-min.js'}
   %style{:type=>'text/css'}
     :sass
       body
@@ -47,6 +48,8 @@
       View the source on 
       %a{:href=>"https://github.com/ekosz/Portal-2-Release-Predictor"} GitHub
   :javascript
+    $(function() {
+    $("div#countdown h2").html(new Date(#{@time}).strftime("%A %I:%M%p"));
     var chart = new Highcharts.Chart({
       
       chart: { renderTo: 'graph', borderRadius: 30, shadow: true},
@@ -54,7 +57,7 @@
       tooltip: {
         formatter: function() {
           var time = new Date(this.x)
-          return time.getDate()+'th at '+time.getHours()+':'+time.getMinutes()+',<br /><b>'+this.y+'%</b> compleated'
+          return time.strftime("%A %I:%M%p")+',<br /><b>'+this.y+'%</b> compleated'
         }
       },
       plotOptions: { line: { dashStyle: 'LongDash' } },
@@ -71,4 +74,5 @@
           name: 'Line of Best Fit'
         }
       ]
+    });
     });
