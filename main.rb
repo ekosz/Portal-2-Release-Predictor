@@ -13,7 +13,7 @@ end
 
 get '/' do
 
-  hash = YAML.load open('http://www.csh.rit.edu/~ekosz/portal.yml')
+  hash = YAML.load File.read "portal.yml"
   lr = LineFit.new
   start = hash[:x][0]
   lr.setData(hash[:x].map{|m|m-start}, hash[:y])
